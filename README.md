@@ -10,7 +10,7 @@ Lastly the liveliness of subdomains is checked using tomnomnom's httprobe and re
 I have put the latest versions of the tools in the repo. In addition to having these tools in the current working directory, make sure to have
 curl and jq packages installed in your linux, since they are used for communication with crt.sh.
 # Usage
-Clone this repo, make sure all files are executable (use chmod +x command if necessary), and run the script.
+Get the script, get all the executables of tools (Amass, Subfinder, Assetfinder and Httprobe) and make sure all files are executable (use chmod +x command if necessary), and run the script.
 ```bash
 ./SubReveal.sh root_domains.txt
 ```  
