@@ -10,6 +10,7 @@ Lastly the liveliness of subdomains is checked using tomnomnom's httprobe and re
 # Usage
 ```bash
 ./subreveal root_domains.txt
+```
 # Notes
 This tool is an automation of well known tools, so credits goes to the creaters of Amass, Subfinder, Assetfinder and Httprobe.
 The tool is new, I plan to add more features and scan automations in near future.
