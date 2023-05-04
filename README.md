@@ -5,7 +5,7 @@ It takes a text file containing a list of subdomains, and scans them with the fo
 - Subfinder
 - Assetfinder  
 
-The tool also checks the result of crt.sh, and parses the json output to extract subdomains. The result is sorted and unique, so no wirries of duplicated results.
+The tool also checks the result of crt.sh, and parses the json output to extract subdomains. The result is sorted and unique, so no worries of duplicated results.
 Lastly the liveliness of subdomains is checked using tomnomnom's httprobe and results are saved in a separate file.  
 I have put the latest versions of the tools in the repo. In addition to having these tools in the current working directory, make sure to have
 curl and jq packages installed in your linux, since they are used for communication with crt.sh.
@@ -13,7 +13,8 @@ curl and jq packages installed in your linux, since they are used for communicat
 Clone this repo, make sure all files are executable (use chmod +x command if necessary), and run the script.
 ```bash
 ./SubReveal.sh root_domains.txt
-```
+```  
+There are three output files. "subsRevealed-raw.txt" containing combination of findings by 4 stages (Amass, Subfinder, Assetfinder, crt.sh). "subsRevealed-live.txt" contaning live subdomains determined by Httprobe. "ip-address.txt" containing ip address of each subdomain (you might want to port scan etc).
 # Notes
 This tool is an automation of well known tools, so credits goes to the creaters of Amass, Subfinder, Assetfinder and Httprobe.
 The tool is new, I plan to add more features and scan automations in near future.
