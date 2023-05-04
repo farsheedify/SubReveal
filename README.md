@@ -10,11 +10,19 @@ Lastly the liveliness of subdomains is checked using tomnomnom's httprobe and re
 I have put the latest versions of the tools in the repo. In addition to having these tools in the current working directory, make sure to have
 curl and jq packages installed in your linux, since they are used for communication with crt.sh.
 # Usage
-Get the script, get all the executables of tools (Amass, Subfinder, Assetfinder and Httprobe) and make sure all files are executable (use chmod +x command if necessary), and run the script.
+Get the script, get all the executables of tools (Amass, Subfinder, Assetfinder and Httprobe) and make sure all files are executable (use chmod +x command if necessary), and run the script:
 ```bash
 ./SubReveal.sh root_domains.txt
 ```  
 There are three output files. "subsRevealed-raw.txt" containing combination of findings by 4 stages (Amass, Subfinder, Assetfinder, crt.sh). "subsRevealed-live.txt" contaning live subdomains determined by Httprobe. "ip-address.txt" containing ip address of each subdomain (you might want to port scan etc).
 # Notes
-This tool is an automation of well known tools, so credits goes to the creaters of Amass, Subfinder, Assetfinder and Httprobe.
-The tool is new, I plan to add more features and scan automations in near future.
+SubReveal is an automation of well known tools, so credits goe to the creaters of Amass, Subfinder, Assetfinder and Httprobe. All tools are executed like this:
+```bash
+./tool [options]
+```
+Example:
+```bash
+./subfinder [options]
+```
+So all of the executable files have to be in the current working directory and have execute permission.  
+This tool is new, I plan to add more features and scan automations in near future. Feel free to share your ideas, or any bugs you encounter.
