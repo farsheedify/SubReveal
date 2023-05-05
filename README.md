@@ -6,8 +6,8 @@ It takes a text file containing a list of subdomains, and scans them with the fo
 - Assetfinder  
 
 The tool also checks the result of crt.sh, and parses the json output to extract subdomains. The result is sorted and unique, so no worries of duplicated results.
-Lastly the liveliness of subdomains is checked using tomnomnom's httprobe and results are saved in a separate file.  
-I have put the latest versions of the tools in the repo. In addition to having these tools in the current working directory, make sure to have
+Lastly the liveliness of subdomains is checked using Tomnomnom's httprobe and results are saved in a separate file.  
+In addition to having these tools in the current working directory, make sure to have
 curl and jq packages installed in your linux, since they are used for communication with crt.sh.
 # Usage
 Get the script, get all the executables of tools (Amass, Subfinder, Assetfinder and Httprobe) and make sure all files are executable (use chmod +x command if necessary), and run the script:
