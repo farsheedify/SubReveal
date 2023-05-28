@@ -47,9 +47,9 @@ done < $1
 printf "%s : Assetfinder Done!\n" "$(date --rfc-3339=seconds)"
 sleep 1
 
-printf "%s : Combining the results in subsRevealed-raw.txt file...\n" "$(date --rfc-3339=seconds)"
+printf "%s : Combining the results...\n" "$(date --rfc-3339=seconds)"
 # sort and deduplicate results
-sort $subsraw | uniq > tmp.txt
+sort $subsraw | uniq | sed '/^$/d' > tmp.txt
 mv tmp.txt $subsraw
 
 printf "%s : Let's see which subdomains are up...\n" "$(date --rfc-3339=seconds)"
