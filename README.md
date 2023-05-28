@@ -21,7 +21,7 @@ Get the script, get all binary files of the tools (Amass, Subfinder, Assetfinder
 Curl and jq packages must be installed in your linux, since they are used for communication with crt.sh.
 There are mainly four output files. "subsraw_${date}" containing combination of findings by 5 stages (Amass Active, Amass Passive, Subfinder, Assetfinder, crt.sh). "subslive_${date}" contaning live subdomains determined by HTTPX (all status codes). "ipaddress_${date}" containing ip address of each subdomain (you might want to port scan etc). "waybackresults.txt" containing result of wayback machine for all live subdomains. There are also 4 text files for different status codes determined by HTTPX scan. For example, "4xx.txt" file contains all subdomains with 404,401,403 status codes etc.
 All formats of NMAP results are also saved with this lable "nmapresults".
-For subfinder tools that runs with "-all" flag, you need to prove a config.yaml file in current working directory.
+For subfinder tool that runs with "-all" flag, you need to provide a config.yaml file in the current working directory.
 Feel free to change flag values for any of the tools.
 # Notes
 SubReveal is an automation of well known tools, and credits go to the creators of Amass, Subfinder, Assetfinder, Httpx and WaybackUrl.  
