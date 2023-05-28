@@ -6,11 +6,13 @@ It takes a text file containing a list of root domains (one or more root domains
 - Subfinder Scan
 - Retrieve Subdomains from Crt.sh
 - Assetfinder Scan
+
 The results are combined, sorted and unique, so no worries of duplicated entries. After subdomain enumeration, the following stages are performed:
 - Scan the Subdomains Using HTTPX and Save the Results Based on Status Code (2xx, 3xx, 4xx and 5xx)
 - Fetch Wayback Machine Results for All of Live Subdomains
 - Extract IP Addresses of Subdomains Using Nslookup
 - Scan Top 25 Ports Using NMAP on Extracted IP Address List in Previous Stage
+
 In addition to having these tools in the current working directory, make sure to have
 
 # Usage
