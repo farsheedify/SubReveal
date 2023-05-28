@@ -13,8 +13,6 @@ The results are combined, sorted and unique, so no worries of duplicated entries
 - Extract IP Addresses of Subdomains Using Nslookup
 - Scan Top 25 Ports Using NMAP on Extracted IP Address List in Previous Stage
 
-In addition to having these tools in the current working directory, make sure to have
-
 # Usage
 Get the script, get all the executables of tools (Amass, Subfinder, Assetfinder and HTTPX) and make sure all files are executable (use chmod +x command if necessary), and run the script:
 ```bash
