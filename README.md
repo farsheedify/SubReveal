@@ -1,22 +1,30 @@
 # SubReveal
 SubReveal is an all-in-one subdomain enumeration package for lazy hackers!  
-It takes a text file containing a list of subdomains, and scans them with the following tools to find subdomains and combine the results:  
-- Amass
-- Subfinder
-- Assetfinder  
-
-The tool also checks the result of crt.sh, and parses the json output to extract subdomains. The result is sorted and unique, so no worries of duplicated results.
-Lastly the liveliness of subdomains is checked using Tomnomnom's httprobe and results are saved in a separate file.  
+It takes a text file containing a list of root domains (one or more root domains), and executes the following stages to find subdomains and combine the results:  
+- Amass Passive Scan
+- Amass Active Scan
+- Subfinder Scan
+- Retrieve Subdomains from Crt.sh
+- Assetfinder Scan
+The results are combined, sorted and unique, so no worries of duplicated entries. After subdomain enumeration, the following stages are performed:
+- Scan the Subdomains Using HTTPX and Save the Results Based on Status Code (2xx, 3xx, 4xx and 5xx)
+- Fetch Wayback Machine Results for All of Live Subdomains
+- Extract IP Addresses of Subdomains Using Nslookup
+- Scan Top 25 Ports Using NMAP on Extracted IP Address List in Previous Stage
 In addition to having these tools in the current working directory, make sure to have
-curl and jq packages installed in your linux, since they are used for communication with crt.sh.
+
 # Usage
-Get the script, get all the executables of tools (Amass, Subfinder, Assetfinder and Httprobe) and make sure all files are executable (use chmod +x command if necessary), and run the script:
+Get the script, get all the executables of tools (Amass, Subfinder, Assetfinder and HTTPX) and make sure all files are executable (use chmod +x command if necessary), and run the script:
 ```bash
 ./SubReveal.sh root_domains.txt
 ```  
-There are three output files. "subsRevealed-raw.txt" containing combination of findings by 4 stages (Amass, Subfinder, Assetfinder, crt.sh). "subsRevealed-live.txt" contaning live subdomains determined by Httprobe. "ip-address.txt" containing ip address of each subdomain (you might want to port scan etc).
+Curl and jq packages must be installed in your linux, since they are used for communication with crt.sh.
+There are mainly four output files. "subsraw_${date}" containing combination of findings by 5 stages (Amass Active, Amass Passive, Subfinder, Assetfinder, crt.sh). "subslive_${date}" contaning live subdomains determined by HTTPX (all status codes). "ipaddress_${date}" containing ip address of each subdomain (you might want to port scan etc). "waybackresults.txt" containing result of wayback machine for all live subdomains. There are also 4 text files for different status codes determined by HTTPX scan. For example, "4xx.txt" file contains all subdomains with 404,401,403 status codes etc.
+All formats of NMAP results are also saved with this lable "nmapresults".
+For subfinder tools that runs with "-all" flag, you need to prove a config.yaml file in current working directory.
+Feel free to change flag values for any of the tools.
 # Notes
-SubReveal is an automation of well known tools, and credits go to the creators of Amass, Subfinder, Assetfinder and Httprobe.  
+SubReveal is an automation of well known tools, and credits go to the creators of Amass, Subfinder, Assetfinder, Httpx and WaybackUrl.  
 SubReveal executes the tools in this manner:
 ```bash
 ./tool [options]
@@ -26,4 +34,4 @@ Example:
 ./subfinder [options]
 ```
 Therefore all of the executable files have to be in the current working directory and have execute permission.  
-This tool is new, I plan to add more features and scan automations in near future. Feel free to share your ideas, or any bugs you encounter.
+Feel free to share your ideas, or any bugs you encounter.
