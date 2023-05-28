@@ -14,7 +14,7 @@ The results are combined, sorted and unique, so no worries of duplicated entries
 - Scan Top 25 Ports Using NMAP on Extracted IP Address List in Previous Stage
 
 # Usage
-Get the script, get all the executables of tools (Amass, Subfinder, Assetfinder and HTTPX) and make sure all files are executable (use chmod +x command if necessary), and run the script:
+Get the script, get all binary files of the tools (Amass, Subfinder, Assetfinder and HTTPX) and make sure all files are executable (use chmod +x command if necessary), and run the script:
 ```bash
 ./SubReveal.sh root_domains.txt
 ```  
