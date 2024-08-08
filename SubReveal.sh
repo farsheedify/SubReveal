@@ -26,7 +26,7 @@ printf "%s : Now we are going to do some certificate magic with crt.sh, certspot
 while read domain; do
 domain=$(echo "$domain" | tr -d '[:space:]') # Trim white spaces
 # Run certspotter
-curl -s -H "Authorization: Bearer k55404_f91UEMe6pTQZq882c8Vy" "https://api.certspotter.com/v1/issuances?domain=${domain}&include_subdomains=true&expand=dns_names" | jq -r '.[].dns_names[]' | grep ${domain} | sort -u >> certspotter.txt
+curl -s -H "Authorization: Bearer {YOUR_CERTSPOTTER_TOKEN}" "https://api.certspotter.com/v1/issuances?domain=${domain}&include_subdomains=true&expand=dns_names" | jq -r '.[].dns_names[]' | grep ${domain} | sort -u >> certspotter.txt
 # Run crt.sh with the domain as argument, parse the json to get subdomains, and append output to subsRevealed-raw.txt
 curl -s https://crt.sh/?Identity=%.${domain} | grep ">*.${domain}" | sed 's/<[/]*[TB][DR]>/\n/g' | grep -vE "<|^[\*]*[\.]*${domain}" | sort -u | awk 'NF' >> crt.txt
 done < $1
