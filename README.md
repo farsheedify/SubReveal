@@ -1,46 +1,56 @@
 # SubReveal
+
 SubReveal is an all-in-one, passive subdomain enumeration package for lazy hackers. It processes a text file containing one or more root domains and performs the following stages to discover and consolidate subdomains:
 
-Subdomain Enumeration Stages
+## Subdomain Enumeration Stages
 
-•  Subfinder Scan
-
-•  Certspotter Subdomain Retrieval
-
-•  Crt.sh Subdomain Retrieval
-
-•  Cero Scan
-
-•  Github-subdomains Scan
-
-•  Assetfinder Scan
+- **Github-subdomains Scan**
+- **Certspotter Subdomain Retrieval**
+- **Crt.sh Subdomain Retrieval**
+- **Cero Scan**
+- **Subfinder Scan**
+- **Assetfinder Scan**
 
 The results are combined, sorted, and deduplicated to ensure unique entries. Following subdomain enumeration, SubReveal executes these additional stages:
 
-Post-Enumeration Stages
+## Post-Enumeration Stages
 
-•  HTTPX Scan: Scans subdomains and categorizes results based on status codes (2xx, 3xx, 4xx, 5xx).
+- **HTTPX Scan**: Scans subdomains, captures screenshots and categorizes results based on status codes (2xx, 3xx, 4xx, 5xx).
+- **NSlookup IP Extraction**: Extracts IP addresses of subdomains.
+- **Smap Passive Scanning**: Passively scans the discovered IP addresses.
 
-•  Gowitness Screenshots: Captures screenshots of live webpages.
+---
 
-•  NSlookup IP Extraction: Extracts IP addresses of subdomains.
+## Usage
 
-•  Smap Passive Scanning: Passively scans the discovered IP addresses.
-
-# Usage
-To use SubReveal, pass the text file containing the root domains to the script and run it:
+To use SubReveal, pass a text file containing the root domains to the script using the `-l` flag and run it:
 ```bash
-./SubReveal.sh root_domains.txt
+./SubReveal.sh -l root_domains.txt
 ```
-Additional Requirements
+### Flags
 
-•  Certspotter API Token: Provide a valid API token and replace {YOUR_CERTSPOTTER_TOKEN} in the 29th line of the code.
+- **`-l`**: (Mandatory) Specify the file containing root domains to process.
+- **`-ct`**: (Optional) Provide a Certspotter API token for Certspotter subdomain retrieval.
+- **`-gt`**: (Optional) Provide a `.token` file containing GitHub tokens for the `github-subdomains` tool.
 
-•  Subfinder Configuration: Ensure a config.yaml file is present in the current working directory for the Subfinder tool running with the -all flag.
+---
 
-Feel free to adjust the flag values for any of the tools as needed.
+## Configuration
 
-# Notes
-SubReveal automates the use of several well-known tools. Interestingly, running different tools at different times can yield varying results. Therefore, it is highly beneficial to run all of them, and perhaps even multiple times! Full credit goes to the creators of Subfinder, Assetfinder, HTTPX, Gowitness, Github-subdomains, and Smap.
+- **Certspotter API Token**: For the Certspotter subdomain retrieval stage, ensure you provide a valid API token using the `-ct` flag.
+- **GitHub Token File**: For the `github-subdomains` tool, provide a `.token` file using the `-gt` flag.
+- **Subfinder Configuration**: Update the `provider-config.yaml` file in Subfinder's default configuration path to include API tokens for various services. This ensures Subfinder operates with full functionality.
+Example usage providing necessary input:
+```bash
+./SubReveal.sh -l roots.txt -ct k11249_8zs380AYyTkJFvIS4wjZ -gt github.token
+```
 
-I welcome your ideas and feedback, and encourage you to report any bugs you encounter.
+---
+
+## Notes
+
+SubReveal automates the use of several well-known tools. Interestingly, running different tools at different times can yield varying results. Therefore, it is highly beneficial to run all of them, and perhaps even multiple times! 
+
+Full credit goes to the creators of Subfinder, Assetfinder, HTTPX, Github-subdomains, and Smap.
+
+I welcome your ideas and feedback and encourage you to report any bugs you encounter.
