@@ -25,14 +25,8 @@ The results are combined, sorted, and deduplicated to ensure unique entries. Fol
 
 To use SubReveal, pass a text file containing the root domains to the script using the `-l` flag and run it:
 ```bash
-./SubReveal.sh -l root_domains.txt
+./SubReveal.sh -l roots.txt
 ```
-### Flags
-
-- **`-l`**: (Mandatory) Specify the file containing root domains to process.
-- **`-ct`**: (Optional) Provide a Certspotter API token for Certspotter subdomain retrieval.
-- **`-gt`**: (Optional) Provide a `.token` file containing GitHub tokens for the `github-subdomains` tool.
-
 ---
 
 ## Configuration
@@ -40,7 +34,8 @@ To use SubReveal, pass a text file containing the root domains to the script usi
 - **Certspotter API Token**: For the Certspotter subdomain retrieval stage, ensure you provide a valid API token using the `-ct` flag.
 - **GitHub Token File**: For the `github-subdomains` tool, provide a `.token` file using the `-gt` flag.
 - **Subfinder Configuration**: Update the `provider-config.yaml` file in Subfinder's default configuration path to include API tokens for various services. This ensures Subfinder operates with full functionality.
-Example usage providing necessary input:
+
+Example usage providing necessary inputs:
 ```bash
 ./SubReveal.sh -l roots.txt -ct k11249_8zs380AYyTkJFvIS4wjZ -gt github.token
 ```
