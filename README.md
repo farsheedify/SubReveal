@@ -1,6 +1,6 @@
 # SubReveal
 
-SubReveal is an all-in-one, passive subdomain enumeration package for lazy hackers. It processes a text file containing one or more root domains and performs the following stages to discover and consolidate subdomains:
+SubReveal is an automation pipeline for passive subdomain discovery. It processes a text file containing one or more root domains and performs the following stages to discover and consolidate subdomains:
 
 ## Subdomain Enumeration Stages
 
