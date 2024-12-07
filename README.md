@@ -40,6 +40,7 @@ Example usage providing necessary inputs:
 ./SubReveal.sh -l roots.txt -ct k11249_8zs380AYyTkJFvIS4wjZ -gt github.token
 ```
 Please ensure that the mentioned tools are installed and added to your system's PATH.
+
 ---
 
 ## Notes
